@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dl2p5loaj62pw"]
+
+[ext_resource type="Script" uid="uid://cww5yx1snikoh" path="res://patrol_ground.gd" id="1_tfmaq"]
+[ext_resource type="Script" uid="uid://bv1tkllit6is6" path="res://player_fall.gd" id="2_0ry8g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofmbn"]
+size = Vector2(50, 50)
+
+[sub_resource type="Gradient" id="Gradient_56v81"]
+offsets = PackedFloat32Array(0.188312, 1)
+colors = PackedColorArray(0, 0, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2ln7h"]
+gradient = SubResource("Gradient_56v81")
+width = 50
+height = 50
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[node name="PatrollingGroundEnemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ofmbn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_2ln7h")
+
+[node name="PatrolGround" type="Node2D" parent="." node_paths=PackedStringArray("body", "shape")]
+script = ExtResource("1_tfmaq")
+body = NodePath("..")
+shape = NodePath("../CollisionShape2D")
+speed = 100.0
+
+[node name="Fall" type="Node2D" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("2_0ry8g")
+body = NodePath("..")

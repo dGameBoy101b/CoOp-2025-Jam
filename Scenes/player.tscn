@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnxx80ybukwvq"]
+[gd_scene load_steps=8 format=3 uid="uid://bnxx80ybukwvq"]
 
-[ext_resource type="Script" uid="uid://dn1vbad3ephgn" path="res://player_walk.gd" id="1_onrkg"]
-[ext_resource type="Script" uid="uid://crlv8x7vxcgy7" path="res://player_jump.gd" id="2_i3pqv"]
-[ext_resource type="Script" uid="uid://bv1tkllit6is6" path="res://player_fall.gd" id="3_i3pqv"]
+[ext_resource type="Script" uid="uid://cpvv25nurx15r" path="res://Scripts/player.gd" id="1_hqtel"]
+[ext_resource type="Script" uid="uid://dn1vbad3ephgn" path="res://Old/player_walk.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://crlv8x7vxcgy7" path="res://Old/player_jump.gd" id="2_i3pqv"]
+[ext_resource type="Script" uid="uid://bv1tkllit6is6" path="res://Old/player_fall.gd" id="3_i3pqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
-size = Vector2(50, 100)
+size = Vector2(48, 85.333)
 
 [sub_resource type="Gradient" id="Gradient_sweqy"]
 offsets = PackedFloat32Array(1)
@@ -13,19 +14,25 @@ colors = PackedColorArray(1, 0, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2hs0m"]
 gradient = SubResource("Gradient_sweqy")
-width = 50
-height = 100
+width = 48
+height = 85
 
 [node name="Player" type="CharacterBody2D"]
 process_mode = 1
-physics_interpolation_mode = 1
 collision_layer = 2
 collision_mask = 5
+script = ExtResource("1_hqtel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hqtel")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_2hs0m")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="walk" type="Node2D" parent="." node_paths=PackedStringArray("body")]
+process_mode = 4
 script = ExtResource("1_onrkg")
 left_input = &"walk_left"
 right_input = &"walk_right"
@@ -33,14 +40,13 @@ body = NodePath("..")
 speed = 300.0
 
 [node name="jump" type="Node2D" parent="." node_paths=PackedStringArray("body")]
+process_mode = 4
 script = ExtResource("2_i3pqv")
 jump_input = &"jump"
 body = NodePath("..")
 power = 650.0
 
 [node name="fall" type="Node2D" parent="." node_paths=PackedStringArray("body")]
+process_mode = 4
 script = ExtResource("3_i3pqv")
 body = NodePath("..")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_2hs0m")

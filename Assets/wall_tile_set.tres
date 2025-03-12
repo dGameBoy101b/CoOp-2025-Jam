@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cndfcghecfmt4"]
 
-[ext_resource type="PackedScene" uid="uid://c6vo45moqcqmi" path="res://wall.tscn" id="1_2fflm"]
+[ext_resource type="PackedScene" uid="uid://c6vo45moqcqmi" path="res://Scenes/wall.tscn" id="1_2fflm"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fy0xp"]
 resource_name = "Walls"

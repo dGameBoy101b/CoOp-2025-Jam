@@ -19,6 +19,8 @@ height = 100
 [node name="Player" type="CharacterBody2D"]
 process_mode = 1
 physics_interpolation_mode = 1
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hqtel")

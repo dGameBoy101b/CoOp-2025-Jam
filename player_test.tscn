@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=4 uid="uid://bt3gf1n0b8poi"]
+
+[ext_resource type="TileSet" uid="uid://cndfcghecfmt4" path="res://wall_tile_set.tres" id="1_e0b2u"]
+[ext_resource type="PackedScene" uid="uid://bnxx80ybukwvq" path="res://player.tscn" id="2_mnirw"]
+[ext_resource type="Script" uid="uid://cs67yox5uylg5" path="res://follow_2d.gd" id="3_mnirw"]
+
+[node name="PlayerTest" type="Node2D"]
+
+[node name="Walls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD6/wAAAAAAAAAAAQD7/wAAAAAAAAAAAQD8/wAAAAAAAAAAAQD9/wAAAAAAAAAAAQD+/wAAAAAAAAAAAQD//wAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAQACAAAAAAAAAAAAAQADAAAAAAAAAAAAAQAEAAAAAAAAAAAAAQAFAAAAAAAAAAAAAQAGAAAAAAAAAAAAAQAHAAAAAAAAAAAAAQAIAAAAAAAAAAAAAQAJAAAAAAAAAAAAAQD5/wAAAAAAAAAAAQD4/wAAAAAAAAAAAQD3/wAAAAAAAAAAAQD2/wAAAAAAAAAAAQD1/wAAAAAAAAAAAQD///n/AAAAAAAAAQD///r/AAAAAAAAAQD///v/AAAAAAAAAQD///z/AAAAAAAAAQD///3/AAAAAAAAAQAEAP3/AAAAAAAAAQAFAP3/AAAAAAAAAQAGAP3/AAAAAAAAAQD6//3/AAAAAAAAAQD5//3/AAAAAAAAAQD4//3/AAAAAAAAAQAAAPv/AAAAAAAAAQD+//v/AAAAAAAAAQA=")
+tile_set = ExtResource("1_e0b2u")
+
+[node name="Player" parent="." instance=ExtResource("2_mnirw")]
+position = Vector2(135, -87)
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+process_mode = 1
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 0
+position = Vector2(0, -254)
+script = ExtResource("3_mnirw")
+target = NodePath("../Player")

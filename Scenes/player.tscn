@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bv1tkllit6is6" path="res://Old/player_fall.gd" id="3_i3pqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
-size = Vector2(48, 85.333)
+size = Vector2(64, 64)
 
 [sub_resource type="Gradient" id="Gradient_sweqy"]
 offsets = PackedFloat32Array(1)
@@ -14,8 +14,6 @@ colors = PackedColorArray(1, 0, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2hs0m"]
 gradient = SubResource("Gradient_sweqy")
-width = 48
-height = 85
 
 [node name="Player" type="CharacterBody2D"]
 process_mode = 1

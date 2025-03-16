@@ -23,11 +23,8 @@ func hit_edge(delta_time: float) -> bool:
 	return not self.test_move(from, motion, null, self.safe_margin)
 
 func calculate_velocity(delta_time: float) -> Vector2:
-	#falling
-	if self.is_on_floor():
-		return self.gravity * delta_time * self.down + self.velocity
-	
 	#patrolling
+	if self.is_on_floor():
 	if self.is_on_wall() or self.hit_edge(delta_time):
 		self._direction *= -1
 		if self.is_on_wall():
@@ -35,6 +32,9 @@ func calculate_velocity(delta_time: float) -> Vector2:
 		else:
 			print("hit edge")
 	return self.speed * self.forward + self.velocity.project(self.down)
+
+	#falling
+	return self.gravity * delta_time * self.down + self.velocity
 
 func _physics_process(delta_time: float) -> void:
 	self.velocity = self.calculate_velocity(delta_time)

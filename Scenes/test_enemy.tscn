@@ -1,8 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dl2p5loaj62pw"]
+[gd_scene load_steps=5 format=3 uid="uid://dl2p5loaj62pw"]
 
 [ext_resource type="Script" uid="uid://unjval6it2fq" path="res://Scenes/basic_enemy.gd" id="1_jm726"]
-[ext_resource type="Script" uid="uid://cww5yx1snikoh" path="res://Scripts/patrol_ground.gd" id="1_tfmaq"]
-[ext_resource type="Script" uid="uid://bv1tkllit6is6" path="res://Old/player_fall.gd" id="2_0ry8g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ofmbn"]
 size = Vector2(64, 64)
@@ -32,15 +30,3 @@ position = Vector2(-50, 0)
 
 [node name="EdgeCheckRight" type="RayCast2D" parent="."]
 position = Vector2(50, 0)
-
-[node name="PatrolGround" type="Node2D" parent="." node_paths=PackedStringArray("body", "shape")]
-process_mode = 4
-script = ExtResource("1_tfmaq")
-body = NodePath("..")
-shape = NodePath("../CollisionShape2D")
-speed = 100.0
-
-[node name="Fall" type="Node2D" parent="." node_paths=PackedStringArray("body")]
-process_mode = 4
-script = ExtResource("2_0ry8g")
-body = NodePath("..")

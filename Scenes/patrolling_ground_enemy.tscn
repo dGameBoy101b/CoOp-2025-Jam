@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn4mx7fqn0b5y"]
+
+[ext_resource type="Script" uid="uid://cww5yx1snikoh" path="res://Scripts/patrol_ground.gd" id="1_tfmaq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofmbn"]
+size = Vector2(50, 50)
+
+[sub_resource type="Gradient" id="Gradient_56v81"]
+offsets = PackedFloat32Array(0.188312, 1)
+colors = PackedColorArray(0, 0, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2ln7h"]
+gradient = SubResource("Gradient_56v81")
+width = 50
+height = 50
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[node name="PatrollingGroundEnemy" type="CharacterBody2D" node_paths=PackedStringArray("shape")]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_tfmaq")
+shape = NodePath("CollisionShape2D")
+speed = 100.0
+gravity = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ofmbn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_2ln7h")

@@ -4,7 +4,14 @@ extends CharacterBody2D
 @export var speed : float
 @export var gravity : float
 
-var _direction : float = 1
+signal direction_change()
+
+var _direction : float = 1:
+	get:
+		return _direction
+	set(value):
+		_direction = value
+		self.direction_change.emit()
 
 ## The direction of gravity.
 var down: Vector2:
@@ -25,13 +32,13 @@ func hit_edge(delta_time: float) -> bool:
 func calculate_velocity(delta_time: float) -> Vector2:
 	#patrolling
 	if self.is_on_floor():
-	if self.is_on_wall() or self.hit_edge(delta_time):
-		self._direction *= -1
-		if self.is_on_wall():
-			print("hit wall")
-		else:
-			print("hit edge")
-	return self.speed * self.forward + self.velocity.project(self.down)
+		if self.is_on_wall() or self.hit_edge(delta_time):
+			self._direction *= -1
+			if self.is_on_wall():
+				print("hit wall")
+			else:
+				print("hit edge")
+		return self.speed * self.forward + self.velocity.project(self.down)
 
 	#falling
 	return self.gravity * delta_time * self.down + self.velocity

@@ -1,0 +1,8 @@
+[gd_resource type="AnimationLibrary" load_steps=2 format=3 uid="uid://du3rr3qghxbem"]
+
+[ext_resource type="Animation" uid="uid://bg3osg8pcrb3i" path="res://Assets/melee_attack.tres" id="1_vhgqd"]
+
+[resource]
+_data = {
+&"melee_attack": ExtResource("1_vhgqd")
+}

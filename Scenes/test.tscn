@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://bt3gf1n0b8poi"]
+[gd_scene load_steps=5 format=4 uid="uid://bt3gf1n0b8poi"]
 
 [ext_resource type="TileSet" uid="uid://cndfcghecfmt4" path="res://Assets/wall_tile_set.tres" id="1_ys1qc"]
 [ext_resource type="PackedScene" uid="uid://bnxx80ybukwvq" path="res://Scenes/player.tscn" id="2_35xla"]
 [ext_resource type="PackedScene" uid="uid://dl2p5loaj62pw" path="res://Scenes/test_enemy.tscn" id="4_5wyu1"]
+[ext_resource type="PackedScene" uid="uid://dn4mx7fqn0b5y" path="res://Scenes/patrolling_ground_enemy.tscn" id="4_ys1qc"]
 
 [node name="PlayerTest" type="Node2D"]
 
@@ -15,3 +16,8 @@ position = Vector2(135, -87)
 
 [node name="PatrollingGroundEnemy" parent="." instance=ExtResource("4_5wyu1")]
 position = Vector2(-720, -238)
+
+[node name="PatrollingGroundEnemy2" parent="." instance=ExtResource("4_ys1qc")]
+position = Vector2(511, -251)
+speed = 200.0
+gravity = 980.0

@@ -1,50 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnxx80ybukwvq"]
+[gd_scene load_steps=4 format=3 uid="uid://6c8yjt0m8kpb"]
 
-[ext_resource type="Script" uid="uid://cpvv25nurx15r" path="res://Scripts/player.gd" id="1_hqtel"]
-[ext_resource type="Script" uid="uid://dn1vbad3ephgn" path="res://Old/player_walk.gd" id="1_onrkg"]
-[ext_resource type="Script" uid="uid://crlv8x7vxcgy7" path="res://Old/player_jump.gd" id="2_i3pqv"]
-[ext_resource type="Script" uid="uid://bv1tkllit6is6" path="res://Old/player_fall.gd" id="3_i3pqv"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_1v7tq"]
+[ext_resource type="Texture2D" uid="uid://defoby566bnm8" path="res://Assets/temp_player.png" id="2_mm62l"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
-size = Vector2(64, 64)
-
-[sub_resource type="Gradient" id="Gradient_sweqy"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 0, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2hs0m"]
-gradient = SubResource("Gradient_sweqy")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjrmm"]
 
 [node name="Player" type="CharacterBody2D"]
-process_mode = 1
-collision_layer = 2
-collision_mask = 5
-script = ExtResource("1_hqtel")
+script = ExtResource("1_1v7tq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_hqtel")
+shape = SubResource("CapsuleShape2D_cjrmm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_2hs0m")
+position = Vector2(4, 2)
+scale = Vector2(0.0313965, 0.0313965)
+texture = ExtResource("2_mm62l")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
+zoom = Vector2(3, 3)
 
-[node name="walk" type="Node2D" parent="." node_paths=PackedStringArray("body")]
-process_mode = 4
-script = ExtResource("1_onrkg")
-left_input = &"walk_left"
-right_input = &"walk_right"
-body = NodePath("..")
-speed = 300.0
+[node name="LeftWallRaycast" type="RayCast2D" parent="."]
+target_position = Vector2(-20, 0)
 
-[node name="jump" type="Node2D" parent="." node_paths=PackedStringArray("body")]
-process_mode = 4
-script = ExtResource("2_i3pqv")
-jump_input = &"jump"
-body = NodePath("..")
-power = 650.0
-
-[node name="fall" type="Node2D" parent="." node_paths=PackedStringArray("body")]
-process_mode = 4
-script = ExtResource("3_i3pqv")
-body = NodePath("..")
+[node name="RightWallRaycast" type="RayCast2D" parent="."]
+target_position = Vector2(20, 0)
